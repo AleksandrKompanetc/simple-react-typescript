@@ -1,3 +1,4 @@
+import { CreateProduct } from "./components/CreateProduct";
 import { ErrorMessage } from "./components/ErrorMessage";
 import { Loader } from "./components/Loader";
 import { Modal } from "./components/Modal";
@@ -13,7 +14,9 @@ function App() {
       {error && <ErrorMessage error={error} />}
       {products.map(product => <Product product={product} key={product.id} />)}
 
-      <Modal />
+      <Modal title="Create new product">
+        <CreateProduct />
+      </Modal>
     </div>
   )
 }
