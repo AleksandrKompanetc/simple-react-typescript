@@ -1,10 +1,33 @@
 import React, {useState} from 'react';
+import { IProduct } from '../models';
+import axios from 'axios';
+
+const productData: IProduct = {
+  title: '',
+  price: 13.5,
+  description: 'lorem ipsum set',
+  image: 'https://i.pravatar.cc',
+  category: 'electronic',
+  rating: {
+    rate: 42,
+    count: 10
+  }
+}
 
 export function CreateProduct() {
   const [value, setValue] = useState('');
+  const [error, setError] = useState('');
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault()
+
+    if (value.trim().length === 0) {
+      setError('Please enter valid title')
+      return
+    }
+
+    productData.title = value
+    const response = await axios.post<IProduct>('https://fakestoreapi.com/products', productData)
   }
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
