@@ -5,10 +5,15 @@ import { Loader } from "./components/Loader";
 import { Modal } from "./components/Modal";
 import { Product } from "./components/Product";
 import { useProducts } from "./hooks/products";
+import { IProduct } from './models';
 
 function App() {
   const {loading, products, error} = useProducts();
   const [modal, setModal] = useState(true);
+
+  const createHandler = (product: IProduct) => {
+    setModal(false)
+  }
   
   return (
     <div className='container mx-auto max-w-2xl pt-5'>
@@ -17,7 +22,7 @@ function App() {
       {products.map(product => <Product product={product} key={product.id} />)}
 
       {modal && <Modal title="Create new product">
-        <CreateProduct onCreate={() => setModal(false)} />
+        <CreateProduct onCreate={createHandler} />
       </Modal>}
     </div>
   )
