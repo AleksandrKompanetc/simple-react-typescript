@@ -8,7 +8,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ModalState>
+      <App />
+    </ModalState>
   </React.StrictMode>
 );
 

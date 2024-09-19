@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { CreateProduct } from "./components/CreateProduct";
 import { ErrorMessage } from "./components/ErrorMessage";
 import { Loader } from "./components/Loader";
@@ -6,13 +6,16 @@ import { Modal } from "./components/Modal";
 import { Product } from "./components/Product";
 import { useProducts } from "./hooks/products";
 import { IProduct } from './models';
+import { ModalContext } from './context/ModalContext';
 
 function App() {
   const {loading, products, error, addProduct} = useProducts();
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
+  const {modal, open, close} = useContext(ModalContext);
 
   const createHandler = (product: IProduct) => {
-    setModal(false)
+    // setModal(false)
+    close()
     addProduct(product)
   }
   
