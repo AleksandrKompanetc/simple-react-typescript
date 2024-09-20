@@ -56,7 +56,10 @@ export function CreateProduct({onCreate}: CreateProductProps) {
 
       <button
         type='submit'
-        className='py-2 px-4 border bg-yellow-400 hover:text-white'>Create</button>
+        className='py-2 px-4 border bg-yellow-400 hover:text-white'
+      >
+        Create
+      </button>
     </form>
   )
 }
